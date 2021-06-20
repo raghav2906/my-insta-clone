@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +15,9 @@
     "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.15"
+    "mongoose": "^5.10.15",
+    "nodemailer": "^6.6.2",
+    "nodemailer-sendgrid-transport": "^0.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"

@@ -147,7 +147,7 @@ const Profile = () => {
         </div>
         
         
-        : <h2>Loading...!</h2>}
+        : <h2 style={{color:"white",marginLeft:"45%",maxWidth:"10%"}}>Loading...!</h2>}
         
         </>
     )

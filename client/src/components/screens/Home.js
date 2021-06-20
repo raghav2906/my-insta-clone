@@ -14,9 +14,11 @@ const Home = () => {
                 "Authorization":"Bearer "+localStorage.getItem("jwt")
             }
         })
-        .then(res=>res.json())
+        .then(res=>{
+            // console.log(res) 
+            return res.json()})
         .then(result=>{
-            console.log(result)
+            // console.log(result)
             setData(result.posts)
         })
     },[])
@@ -48,7 +50,7 @@ const Home = () => {
             .then(result =>{
                 console.log(result)
                 const duplicate = data.map((item)=>{
-                    if(item._id == postId){
+                    if(item._id === postId){
                         return {
                             ...item,
                             photo:idata.url
@@ -190,7 +192,7 @@ const Home = () => {
                 data.slice(0).reverse().map(item=>{
                     return(
                         <div className="card home-card">
-                            <h5><Link to={item.postedBy._id !== state._id ? `/profile/${item.postedBy._id}` : '/profile'}><span><img style={{width:"5%",height:"5%",marginLeft:"6px",marginTop:"6px",borderRadius:"50%"}} src={item.postedBy.pic} /></span><span  style={{color:"white",padding:"10px"}}>{item.postedBy.name}</span></Link> {item.postedBy._id == state._id 
+                            <h5><Link to={item.postedBy._id !== state._id ? `/profile/${item.postedBy._id}` : '/profile'}><span><img style={{width:"5%",height:"5%",marginLeft:"6px",marginTop:"6px",borderRadius:"50%"}} src={item.postedBy.pic} /></span><span  style={{color:"white",padding:"10px"}}>{item.postedBy.name}</span></Link> {item.postedBy._id === state._id 
                                 && <i className="material-icons" style={{float:"right"}} 
                                 onClick={()=>deletePost(item._id)} >
                                 delete</i> 
@@ -199,7 +201,7 @@ const Home = () => {
                                 <img src={item.photo} />
                             </div>
                             <div className="card-content">
-                            {item.postedBy._id == state._id 
+                            {item.postedBy._id === state._id 
                             &&    <div className="file-field input-field">
                                 <div className="btn #64b5f6 blue darken">
                                     <span>Update post</span>
@@ -231,7 +233,7 @@ const Home = () => {
                                         return(
                                         <h6 key={record._id}><span style={{fontWeight:"500"}}>{record.postedBy.name}</span> {record.text}
                                         
-                                        {item.postedBy._id == state._id 
+                                        {item.postedBy._id === state._id 
                                         && <i className="material-icons" style={{float:"right"}} 
                                         onClick={()=>deleteComment(item._id,record._id)} >
                                         delete</i> 

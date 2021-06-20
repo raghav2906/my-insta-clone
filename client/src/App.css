@@ -53,9 +53,7 @@ a{
   margin-bottom: 2rem;
   
 }
-.home{
- 
-}
+
 .home-card{
   max-width: 600px;
   height: max-content;
@@ -73,10 +71,17 @@ a{
   /* background-size: 100%; */
     -webkit-background-clip: text;
     -moz-background-clip: text;
+    background-clip:none;
     -webkit-text-fill-color: transparent; 
     -moz-text-fill-color: transparent;
 }
 
 .material-icons:hover{
   cursor: pointer;
+}
+.collection li{
+  color: black;
+}
+.collection-item{
+  width: 100%;
 }

@@ -10,6 +10,8 @@ import CreatePost from './components/screens/CreatePost'
 import {reducer,initialState} from './reducers/userReducer'
 import UserProfile from './components/screens/UserProfile'
 import SubPost from './components/screens/SubPost'
+import Reset from './components/screens/Reset'
+import NewPassword from './components/screens/NewPassword'
 
 export const UserContext = createContext()
 
@@ -20,37 +22,47 @@ const Routing = () => {
   const {state,dispatch} = useContext(UserContext)
   useEffect(()=>{
     const user = JSON.parse(localStorage.getItem("user"))
-    console.log(user)
+    // console.log(user)
     if(user){
       dispatch({type:"USER",payload:user})
       
     }
     else{
+      if(!(history.location.pathname.startsWith('/reset')))
       history.push('/login')
     }
   },[])
   return(
     <Switch>
-    <Route path exact="/">
-        <Home/>
-      </Route>
+    
       <Route path="/login">
         <Login/>
       </Route>
       <Route path="/signup">
         <Signup/>
       </Route>
-      <Route exact path="/profile">
+      <Route path="/profile/:userid">
+        <UserProfile/>
+      </Route>
+      <Route  path="/profile">
         <Profile/>
       </Route>
       <Route  path="/create">
         <CreatePost/>
       </Route>
-      <Route path="/profile/:userid">
-        <UserProfile/>
+      <Route path="/reset/:token">
+        <NewPassword/>
       </Route>
+      <Route  path="/reset">
+        <Reset/>
+      </Route>
+      
+      
       <Route path="/myfollowerpost">
         <SubPost/>
+      </Route>
+      <Route path ="/">
+        <Home/>
       </Route>
     </Switch>
   )
